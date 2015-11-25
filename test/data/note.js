@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   guid: '8c7d8959-c5b1-47e9-b5c1-1c8542c1608d',
   title: 'test',
   content: '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">\n<en-note>\n\t<ol>\n\t\t<li>list1</li>\n\t\t<li>list2</li>\n\t</ol>\n\t<div><en-todo checked="false"/>todo1</div>\n\t<div><en-todo checked="true"/>todo2(finish)</div>\n\t<div><en-media hash="680e0d4e68a4399a5199531903f6a031" type="image/png"/></div>\n\t<div>语音：</div><div><en-media hash="9ba6456965abe0d1b8911bf3a1fc8828" type="audio/x-m4a"/></div><div><br/></div>\n\t<div><br clear="none"/></div>\n\n\n</en-note>\n',

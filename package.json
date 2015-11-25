@@ -1,10 +1,10 @@
 {
   "name": "enml2html",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "parse ENML to HTML",
   "main": "lib/enml2html",
   "scripts": {
-    "test": "./node_modules/.bin/babel-node test/enml2html.js"
+    "test": "node test/enml2html.js"
   },
   "keywords": [
     "enml",
@@ -13,12 +13,12 @@
   "dependencies": {
     "cheerio": "^0.19.0"
   },
-  "devDependencies": {
-    "babel": "^5.8.23"
-  },
   "author": {
     "name": "nswbmw",
     "email": "nswbmw1992@gmail.com"
+  },
+  "engines": {
+    "node": ">= 4"
   },
   "repository": {
     "type": "git",
