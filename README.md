@@ -11,7 +11,7 @@ npm i enml2html --save
 ### Usage
 
 ```
-enml2html(enml, resources, webApiUrlPrefix)
+enml2html(enml, resources, webApiUrlPrefix, noteKey)
 ```
 
 arguments:
@@ -118,6 +118,10 @@ arguments:
   ```
   https://sandbox.evernote.com/shard/s1
   ```
+
+- noteKey: {String}
+
+> If this note is not already shared (via its own direct URL), then this will start sharing that note. This will return the secret "Note Key" for this note that can currently be used in conjunction with the Note's GUID to gain direct read-only access to the Note.
 
 ### Example
 
