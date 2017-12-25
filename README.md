@@ -1,127 +1,116 @@
 ## enml2html
 
-parse ENML to HTML.
-
-### Install
-
-```
-npm i enml2html --save
-```
+parse ENML to HTML, used by [everblog](https://github.com/everblogjs/everblog).
 
 ### Usage
 
+```js
+enml2html(note)
 ```
-enml2html(enml, resources, webApiUrlPrefix, noteKey)
+
+`note` should like:
+
+```json
+{
+  "guid": "749b9e66-fd06-4553-85a4-e582d1bc00d0",
+  "title": "test",
+  "content": "<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\"><en-note><div><ol><li>one</li><li>two</li><li>three</li></ol><div><br /></div></div><div><en-media hash=\"3909f9184a919e4b12a7f287de75c220\" type=\"image/jpeg\" /></div><div><br /></div></en-note>",
+  "contentHash": Buffer.from([7, 241, 224, 106, 90, 120, 186, 12, 120, 82, 47, 101, 12, 173, 121, 253]),
+  "contentLength": 257,
+  "created": 1514433113000,
+  "updated": 1514433136000,
+  "deleted": null,
+  "active": true,
+  "updateSequenceNum": 1703,
+  "notebookGuid": "c45d6725-4194-4dfc-844f-e9e5e408f2f9",
+  "tagGuids": null,
+  "resources": [{
+    "guid": "459d7522-56cc-4ab5-bfed-6a322dd90f46",
+    "noteGuid": "749b9e66-fd06-4553-85a4-e582d1bc00d0",
+    "data": {
+      "bodyHash": Buffer.from([57, 9, 249, 24, 74, 145, 158, 75, 18, 167, 242, 135, 222, 117, 194, 32]),
+      "size": 40836,
+      "body": null
+    },
+    "mime": "image/jpeg",
+    "width": 1920,
+    "height": 1200,
+    "duration": null,
+    "active": true,
+    "recognition": {
+      "bodyHash": Buffer.from([168, 93, 106, 109, 246, 31, 140, 25, 234, 199, 138, 176, 6, 51, 40, 43]),
+      "size": 925,
+      "body": null
+    },
+    "attributes": {
+      "sourceURL": null,
+      "timestamp": null,
+      "latitude": null,
+      "longitude": null,
+      "altitude": null,
+      "cameraMake": null,
+      "cameraModel": null,
+      "clientWillIndex": null,
+      "recoType": null,
+      "fileName": "88515.jpg",
+      "attachment": false,
+      "applicationData": null
+    },
+    "updateSequenceNum": 1702,
+    "alternateData": null
+  }],
+  "attributes": {
+    "subjectDate": null,
+    "latitude": 39.95982205371607,
+    "longitude": 116.45540019295498,
+    "altitude": 45.10775375366211,
+    "author": "nswbmw",
+    "source": "desktop.mac",
+    "sourceURL": null,
+    "sourceApplication": null,
+    "shareDate": 1514433145000,
+    "reminderOrder": null,
+    "reminderDoneTime": null,
+    "reminderTime": null,
+    "placeName": null,
+    "contentClass": null,
+    "applicationData": null,
+    "lastEditedBy": null,
+    "classifications": null,
+    "creatorId": null,
+    "lastEditorId": null,
+    "sharedWithBusiness": null,
+    "conflictSourceNoteGuid": null,
+    "noteTitleQuality": null
+  },
+  "tagNames": null,
+  "sharedNotes": null,
+  "restrictions": null,
+  "limits": null,
+  "webApiUrlPrefix": "https://www.evernote.com/shard/s221/",
+  "noteKey": "92447ef24266f18a",
+  "tags": []
+}
 ```
 
-arguments:
+Will convert to:
 
-- enml: {String} enml string, like:
-
-  ```
-  <?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">\n<en-note>\n\t<ol>\n\t\t<li>list1</li>\n\t\t<li>list2</li>\n\t</ol>\n\t<div><en-todo checked="false"/>todo1</div>\n\t<div><en-todo checked="true"/>todo2(finish)</div>\n\t<div><en-media hash="680e0d4e68a4399a5199531903f6a031" type="image/png"/></div>\n\t<div>语音：</div><div><en-media hash="9ba6456965abe0d1b8911bf3a1fc8828" type="audio/x-m4a"/></div><div><br/></div>\n\t<div><br clear="none"/></div>\n\n\n</en-note>\n
-  ```
-
-- resources: {Array} resources array, like:
-
-  ```
-  [ { guid: 'c0eabce5-243f-4dcd-af2d-60b2c66281ed',
-         noteGuid: '8c7d8959-c5b1-47e9-b5c1-1c8542c1608d',
-         data:
-          { bodyHash:
-             { '0': 104,
-               '1': 14,
-               '2': 13,
-               '3': 78,
-               '4': 104,
-               '5': 164,
-               '6': 57,
-               '7': 154,
-               '8': 81,
-               '9': 153,
-               '10': 83,
-               '11': 25,
-               '12': 3,
-               '13': 246,
-               '14': 160,
-               '15': 49 },
-            size: 1318,
-            _body: null },
-         mime: 'image/png',
-         width: null,
-         height: null,
-         duration: null,
-         active: true,
-         recognition: null,
-         attributes:
-          { sourceURL: null,
-            timestamp: null,
-            latitude: null,
-            longitude: null,
-            altitude: null,
-            cameraMake: null,
-            cameraModel: null,
-            clientWillIndex: null,
-            recoType: null,
-            fileName: 'avatar.png',
-            attachment: null,
-            applicationData: null },
-         updateSequenceNum: 312,
-         alternateData: null },
-       { guid: '31474ee1-b809-4c14-adbb-89229ccdc025',
-         noteGuid: '8c7d8959-c5b1-47e9-b5c1-1c8542c1608d',
-         data:
-          { bodyHash:
-             { '0': 155,
-               '1': 166,
-               '2': 69,
-               '3': 105,
-               '4': 101,
-               '5': 171,
-               '6': 224,
-               '7': 209,
-               '8': 184,
-               '9': 145,
-               '10': 27,
-               '11': 243,
-               '12': 161,
-               '13': 252,
-               '14': 136,
-               '15': 40 },
-            size: 81712,
-            _body: null },
-         mime: 'audio/x-m4a',
-         width: 0,
-         height: 0,
-         duration: null,
-         active: true,
-         recognition: null,
-         attributes:
-          { sourceURL: null,
-            timestamp: null,
-            latitude: null,
-            longitude: null,
-            altitude: null,
-            cameraMake: null,
-            cameraModel: null,
-            clientWillIndex: null,
-            recoType: null,
-            fileName: 'Evernote 20150901 11:51:39.m4a',
-            attachment: false,
-            applicationData: null },
-         updateSequenceNum: 313,
-         alternateData: null } ]
-  ```
-
-- webApiUrlPrefix: {String} webApiUrlPrefix, like: 
-
-  ```
-  https://sandbox.evernote.com/shard/s1
-  ```
-
-- noteKey: {String}
-
-> If this note is not already shared (via its own direct URL), then this will start sharing that note. This will return the secret "Note Key" for this note that can currently be used in conjunction with the Note's GUID to gain direct read-only access to the Note.
+```html
+<div class="enNote">
+  <div>
+    <ol>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+    </ol>
+    <div><br></div>
+  </div>
+  <div>
+    <img class="enMedia" src="https:/www.evernote.com/shard/s221/sh/749b9e66-fd06-4553-85a4-e582d1bc00d0/92447ef24266f18a/res/459d7522-56cc-4ab5-bfed-6a322dd90f46/88515.jpg" hash="3909f9184a919e4b12a7f287de75c220" alt="88515.jpg">
+  </div>
+  <div><br></div>
+</div>
+```
 
 ### Example
 
@@ -129,8 +118,8 @@ see [test](./test/enml2html.js).
 
 ### Test
 
-```
-npm test
+```sh
+$ npm test
 ```
 
 ### License
