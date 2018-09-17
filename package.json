@@ -1,24 +1,25 @@
 {
   "name": "enml2html",
-  "version": "0.3.0",
-  "description": "parse ENML to HTML",
+  "version": "1.1.0",
+  "description": "parse ENML to HTML, used by [everblog](https://github.com/everblogjs/everblog).",
   "main": "lib/enml2html",
   "scripts": {
     "test": "node test/enml2html.js"
   },
   "keywords": [
+    "evernote",
     "enml",
-    "enml2html"
+    "html"
   ],
   "dependencies": {
-    "cheerio": "^0.19.0"
+    "cheerio": "^1.0.0-rc.2"
   },
   "author": {
     "name": "nswbmw",
-    "email": "nswbmw1992@gmail.com"
+    "url": "https://github.com/nswbmw"
   },
   "engines": {
-    "node": ">= 4"
+    "node": ">= 6"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,12 @@
   },
   "bugs": {
     "url": "https://github.com/nswbmw/enml2html/issues"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "11.0.0-beta.0",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-node": "5.2.1",
+    "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-standard": "3.0.1"
   }
 }
